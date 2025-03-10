@@ -36,7 +36,6 @@ export const Panel = () => {
   const [newTitle, setNewTitle] = useState("");
   const [newDescription, setNewDescription] = useState("");
 
-
   // Estados para el modal de agregar post
   const [addPostModalOpen, setAddPostModalOpen] = useState(false);
   const [addPostModalMessage, setAddPostModalMessage] = useState("");
@@ -298,7 +297,8 @@ export const Panel = () => {
             }
           );
           const result = await response.json();
-          return result.url.replace("/upload/", "/upload/q_auto/"); // Asegurar compresión con q_auto
+          return result.secure_url.replace("/upload/", "/upload/q_auto/");
+          //return result.url.replace("/upload/", "/upload/q_auto/"); // Asegurar compresión con q_auto
         })
       );
 
@@ -359,8 +359,6 @@ export const Panel = () => {
       setDeletePostId(null);
     }
   };
-
-
 
   return (
     <div className="panel-container">
@@ -515,26 +513,20 @@ export const Panel = () => {
                         <td>{post.title}</td>
                         <td>{post.description}</td>
                         <td>
+                          <div className="modal-buttons">
+                            <button onClick={() => openEditModal(post)}>
+                              Editar
+                            </button>
 
-
-                        <div className="modal-buttons">
-                        <button  onClick={() => openEditModal(post)}>
-              Editar
-            </button>
-
-
-
-                          <button
-                            onClick={() => {
-                              setDeletePostId(post.id);
-                              setDeletePostModalOpen(true);
-                            }}
-                          >
-                            Eliminar
-                          </button>
-                        </div>
-                       
-
+                            <button
+                              onClick={() => {
+                                setDeletePostId(post.id);
+                                setDeletePostModalOpen(true);
+                              }}
+                            >
+                              Eliminar
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -603,11 +595,7 @@ export const Panel = () => {
         </div>
       )}
 
-
-
-
-
-{modalVisible && (
+      {modalVisible && (
         <div className="modal">
           <div className="modal-content">
             <h2>Editar Publicación</h2>
@@ -617,26 +605,23 @@ export const Panel = () => {
               onChange={(e) => setNewTitle(e.target.value)}
               placeholder="Nuevo título"
             />
-            <br/>
-            <br/>
+            <br />
+            <br />
             <textarea
               value={newDescription}
               onChange={(e) => setNewDescription(e.target.value)}
               placeholder="Nueva descripción"
             />
-             <div className="modal-buttons">
-             
-            <button onClick={() => setModalVisible(false)} className="cancel">
-              Cancelar
-            </button>
+            <div className="modal-buttons">
+              <button onClick={() => setModalVisible(false)} className="cancel">
+                Cancelar
+              </button>
 
-            <button onClick={handleSave}>Guardar</button>
-             </div>
-          
+              <button onClick={handleSave}>Guardar</button>
+            </div>
           </div>
         </div>
       )}
-
     </div>
   );
 };
