@@ -1,13 +1,371 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h2,
+h3,
+p,
+th,
+a,
+td {
+  font-family: Arial, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+  padding: 20px;
+}
+
+/* Caja del formulario */
+.login-box {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 350px; /* Máximo tamaño */
+}
+
+/* Logo */
+.login-logo {
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+/* Título */
+.login-title {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Inputs y botón con el mismo ancho */
+.login-input,
+.login-button {
+  width: 100%;
+  max-width: 300px; /* Asegura el mismo ancho */
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box; /* Solución clave */
+}
+
+/* Input específico */
+.login-input {
+  background-color: #333;
+  color: white;
+  outline: none;
+}
+
+/* Botón */
+.login-button {
+  background-color: #1d7067;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-button:hover {
+  background-color: #154641;
+}
+
+/* Mensaje de error */
+.login-error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 400px) {
+  .login-box {
+    padding: 20px;
+  }
+
+  .login-input,
+  .login-button {
+    max-width: 100%;
+  }
+}
+
+.panel-container {
+  display: flex;
+  height: 100vh;
+  background: #1e1e1e;
+  color: white;
+}
+
+.sidebar {
+  width: 250px;
+  background: #2a2a2a;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar button:hover {
+  color: orange;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+input,
+textarea {
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+button {
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  box-sizing: border-box;
+  background: #1d7067;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #154641;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: rgb(57, 52, 52);
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+  gap: 20px; /* Espaciado entre los botones */
+}
+
+.modal-buttons button:first-child {
+  background-color: #154641;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal-buttons button:first-child:hover {
+  background-color: #092a26;
+}
+
+.modal-buttons button:last-child {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal-buttons button:last-child:hover {
+  background-color: #c82333;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.styled-table thead {
+  background-color: #1d7067;
+  color: #ffffff;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+/*
+.styled-table tbody tr:nth-child(even) {
+  background-color: #580a0a;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #1d7067;
+}
+*/
+.styled-table button {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.styled-table button:hover {
+  background-color: #c82333;
+}
+
+.loader {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px;
+}
+
+.loader::after {
+  content: "⏳";
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Caja del formulario */
+.login-box {
+  background-color: #1e1e1e;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  display: flex; /* Agregado */
+  flex-direction: column; /* Agregado */
+  align-items: center; /* Centrar contenido */
+}
+
+/* Centrar los inputs y el botón */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-input,
+.login-button {
+  width: 100%; /* Asegurar ancho completo */
+  max-width: 300px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+  text-align: center; /* Asegurar texto centrado */
+}
+
+button[type="submit"] {
+  color: white;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.sidebar-footer a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.3s;
+}
+
+.sidebar-footer a:hover {
+  color: orange;
 }
