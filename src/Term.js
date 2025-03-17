@@ -2,11 +2,11 @@ import React from "react";
 
 export function Term() {
   return (
-    <div className="container">
-      <div className="center">
-        <h1 className="title">Términos y Condiciones de Uso</h1>
+    <div className="containerT">
+      <div className="centerT">
+        <h1 className="titleT">Términos y Condiciones de Uso</h1>
       </div>
-      <div className="content">
+      <div className="contentT">
         <p>
           Los Términos y Condiciones rigen al usar esta aplicación. Al
           registrarse, confirma que usted es mayor de 18 años y haber leído y
@@ -58,7 +58,7 @@ export function Term() {
           sus dispositivos.
         </p>
         <h2>Política de Privacidad</h2>
-        <p>Última Actualización: 18 de marzo del 2025</p>
+        <p>Última Actualización: 17 de marzo del 2025</p>
         <p>
           Usamos sus datos personales para proporcionar y mejorar el Servicio.
           Al usar la aplicación GEO Alerta, acepta la recopilación y el uso de
@@ -79,6 +79,7 @@ export function Term() {
             target="_blank"
             rel="noopener noreferrer"
           >
+            {" "}
             Aquí
           </a>
         </p>
